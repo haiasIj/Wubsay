@@ -38,10 +38,11 @@ public class WubsayProductDataManager {
             String[] values = line.split(",");
             String category = values[0];
             String item = values[1];
-            double price = Double.parseDouble(values[2]);
-            boolean included = Boolean.parseBoolean(values[3]);
+            String size = values[2];
+            double price = Double.parseDouble(values[3]);
+            boolean included = Boolean.parseBoolean(values[4]);
 
-            return new SandwichProduct(category, item, price, included);
+            return new SandwichProduct(category, item, size, price, included);
         } catch (Exception e) {
             System.out.println("Error parsing line");
             return null;
