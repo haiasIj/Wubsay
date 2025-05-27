@@ -9,7 +9,7 @@ public class WubsayProductDataManager {
     private final String csvFilePath;
 
     public WubsayProductDataManager() {
-        this.csvFilePath = "src/main/resources/sandwhichMenu.csv";
+        this.csvFilePath = "src/main/resources/sandwichMenu.csv";
     }
 
     public ArrayList<SandwichProduct> loadSandwichProducts() {
@@ -36,13 +36,33 @@ public class WubsayProductDataManager {
     private SandwichProduct parseProductFromCSV(String line) {
         try {
             String[] values = line.split(",");
-            String category = values[0];
-            String item = values[1];
-            String size = values[2];
-            double price = Double.parseDouble(values[3]);
-            boolean included = Boolean.parseBoolean(values[4]);
 
-            return new SandwichProduct(category, item, size, price, included);
+            String category = values[0].trim();
+            String item = values[1].trim();
+            String size = values[2].trim();
+            String priceStr = values[3].trim();
+            String notes = values.length > 4 ? values[4].trim() : "";
+
+            String name = item;
+
+            double price = 0.0;
+            boolean included = false;
+
+            if(priceStr.equalsIgnoreCase("Included")) {
+                price = 0.0;
+                included = true;
+            } else {
+                try {
+                    price = Double.parseDouble(priceStr);
+                    included = false;
+                } catch (NumberFormatException e) {
+                    System.out.println("Could not parse price: " + priceStr);
+                    price = 0.0;
+                    included = false;
+                }
+            }
+
+            return new SandwichProduct(category, item, name, size, price, included);
         } catch (Exception e) {
             System.out.println("Error parsing line");
             return null;
