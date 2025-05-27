@@ -5,19 +5,29 @@ public class SandwichProduct {
     private String item;
     private String size;
     private double price;
+    private String name;
     private boolean included; //no up-charge if included
 
-    public SandwichProduct(String category, String item,String size, double price, boolean included) {
+    public SandwichProduct(String category, String item,String name,String size, double price, boolean included) {
         this.category = category;
         this.item = item;
         this.size = size;
         this.price = price;
         this.included = included;
+        this.name = name;
     }
 
     //getters and setters
     public String getCategory() {
         return category;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setCategory(String category) {
