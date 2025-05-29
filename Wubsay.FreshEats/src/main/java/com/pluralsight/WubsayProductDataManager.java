@@ -64,7 +64,6 @@ public class WubsayProductDataManager {
 
             return new SandwichProduct(category, item, name, size, price, included);
         } catch (Exception e) {
-            System.out.println("Error parsing line");
             return null;
         }
     }

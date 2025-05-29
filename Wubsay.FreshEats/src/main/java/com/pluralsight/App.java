@@ -8,7 +8,7 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         WubsayProductDataManager wubsayDataManager = new WubsayProductDataManager();
         wubsayDataManager.loadSandwichProducts();
-        WubsayMenu menu = new WubsayMenu();
+
 
         int choice;
 
@@ -18,7 +18,7 @@ public class App {
 
 
             if (choice == 1) {
-                menu.displayMenu(); //remove the static call
+                WubsayMenu.displayMenu(); //remove the static call
             } else if (choice == 2) {
                 System.out.println("Have a good day!");
                 System.exit(0);
